@@ -28,7 +28,8 @@ export default function PracticePage() {
   const prevLetter = getPrevLetter(type, letterIndex)
 
   const parsedCanvasData: Record<string, unknown> | null = canvasData ? JSON.parse(canvasData) : null;
-  const undoDisabled = (parsedCanvasData?.lines?.length ?? 0) === 0;
+  const lines = (parsedCanvasData?.lines as unknown[]) ?? []
+  const undoDisabled = lines.length === 0;
 
   useEffect(() => {
     if (!canvasData || !initialLoaded.current) {
@@ -92,7 +93,9 @@ export default function PracticePage() {
             </div>
             <div>
               <CanvasDraw
-                ref={canvasDraw => (canvasRef.current = canvasDraw)}
+                ref={(canvasDraw) => {
+                  canvasRef.current = canvasDraw;
+                }}
                 className="border border-gray-300 aspect-square"
                 brushColor="black"
                 brushRadius={4}
@@ -116,6 +119,7 @@ export default function PracticePage() {
                   size='icon'
                   disabled={undoDisabled}
                   title='Erase all'
+                  /* @ts-expect-error: Type error */
                   onClick={() => canvasRef.current?.eraseAll()}
                 >
                   <Trash2 />
