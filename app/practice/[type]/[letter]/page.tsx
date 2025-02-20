@@ -10,6 +10,8 @@ import { notFound, useParams } from 'next/navigation'
 import { Fragment, useEffect, useRef, useState } from 'react'
 import CanvasDraw from 'react-canvas-draw'
 
+export const runtime = 'edge';
+
 export default function PracticePage() {
   const { type, letter } = useParams<{ type: string, letter: string }>();
 
