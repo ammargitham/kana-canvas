@@ -40,12 +40,15 @@ export default function PracticePage() {
       const db = await openDatabase()
       const transaction = db.transaction(['practicedLetters'], 'readwrite')
       const store = transaction.objectStore('practicedLetters')
-      store.put({
+      const request = store.put({
         letter,
         type,
         canvasData,
         timestamp: new Date(),
       });
+      request.onerror = () => {
+        console.error('Failed to save practiced letter');
+      };
     }
     savePracticedLetter();
   }, [canvasData, letter, type]);
@@ -59,9 +62,9 @@ export default function PracticePage() {
       const request = store.get(letter)
       request.onsuccess = () => {
         if (request.result && !initialLoaded.current) {
-          initialLoaded.current = true;
           canvasRef?.current?.loadSaveData(request.result.canvasData as string);
         }
+        initialLoaded.current = true;
       }
     }
     loadPracticedLetter();
@@ -102,6 +105,7 @@ export default function PracticePage() {
                 lazyRadius={0}
                 gridSizeX={220}
                 gridSizeY={220}
+                gridColor='rgb(0, 0, 0, 0.5)'
                 onChange={(canvasDraw) => setCanvasData(canvasDraw.getSaveData())}
               />
               <div>
