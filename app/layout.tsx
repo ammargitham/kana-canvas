@@ -1,3 +1,4 @@
+import { getGaId } from '@/lib/actions';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
@@ -15,13 +16,12 @@ export const metadata: Metadata = {
   description: "Improve your Japanese handwriting with helpful tips, easy-to-follow stroke orders, and examples of proper handwriting. Practice in our interactive space to build confidence in your writing skills.",
 };
 
-const gaId = process.env.GOOGLE_TAG_ID;
-
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const gaId = await getGaId();
   return (
     <html lang="en">
       <body

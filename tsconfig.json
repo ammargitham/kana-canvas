@@ -26,7 +26,11 @@
       "@/*": [
         "./*"
       ]
-    }
+    },
+    "types": [
+      "./.wrangler/types/runtime.d.ts",
+      "./worker-configurations.d.ts"
+    ]
   },
   "include": [
     "next-env.d.ts",
