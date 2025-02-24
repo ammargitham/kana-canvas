@@ -3,7 +3,7 @@
 import { getCloudflareContext } from "@opennextjs/cloudflare";
 
 export async function getGaId() {
-  const { env } = getCloudflareContext();
+  const { env } = await getCloudflareContext({ async: true});
   const gaId = (env as Env).GOOGLE_TAG_ID;
   return gaId;
 }
