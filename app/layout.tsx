@@ -27,7 +27,6 @@ export default async function RootLayout({
       <body
         className={`${montserrat.className} antialiased`}
       >
-        <p>GA Id: {gaId}</p>
         <nav className="p-4">
           <div className="container mx-auto flex">
             <Link href="/" className="font-bold pr-2">
