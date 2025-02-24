@@ -25,9 +25,10 @@ export default function Home() {
         src={headerImage}
         alt='KanaCanvas'
       />
-      <main className='container mx-auto p-4 mt-4'>
-        <h1 className="text-4xl font-semibold mb-12">Tips for beautiful Japanese handwriting</h1>
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
+      <main className='container mx-auto p-8 mt-4'>
+        <h1 className="text-4xl font-normal mb-8">Tips for beautiful handwriting in Japanese</h1>
+        <p className='font-medium mb-12'>Improve your Japanese handwriting with helpful tips, easy-to-follow stroke orders, and real examples of proper handwriting. Practice in our interactive space to build confidence in your writing skills.</p>
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-28'>
           {sections.map((section) => (
             <div key={section.title}>
               <h2 className="text-lg font-bold mb-2">{section.title}</h2>
@@ -38,7 +39,7 @@ export default function Home() {
                   buttonVariants({ variant: 'outline' }),
                   'border-blue-400 text-blue-500 hover:text-blue-600',
                 )}
-              >Learn More</Link>
+              >Learn</Link>
             </div>
           ))}
         </div>

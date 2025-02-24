@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
+import Image from 'next/image';
 import Link from 'next/link';
+import logo from '../public/logo.svg';
 import "./globals.css";
 
 const montserrat = Montserrat({
@@ -25,7 +27,7 @@ export default function RootLayout({
         <nav className="p-4">
           <div className="container mx-auto flex">
             <Link href="/" className="font-bold pr-2">
-              KanaCanvas
+              <Image src={logo} alt="KanaCanvas" height={24} />
             </Link>
             <div className="space-x-4 flex-1 flex justify-end">
               <Link href="/hiragana" className="text-blue-500 hover:text-blue-600">
