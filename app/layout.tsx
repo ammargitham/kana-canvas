@@ -1,4 +1,3 @@
-import { getGaId } from '@/lib/actions';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
@@ -21,7 +20,8 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const gaId = await getGaId();
+  // const gaId = await getGaId();
+  const gaId = process.env.GOOGLE_TAG_ID;
   return (
     <html lang="en">
       <body
