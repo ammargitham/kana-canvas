@@ -29,7 +29,7 @@
     },
     "types": [
       "./.wrangler/types/runtime.d.ts",
-      "./worker-configuration.d.ts"
+      "./cloudflare-env.d.ts"
     ]
   },
   "include": [
