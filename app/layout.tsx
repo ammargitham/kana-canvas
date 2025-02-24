@@ -1,3 +1,4 @@
+import { GoogleAnalytics } from '@next/third-parties/google';
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import Image from 'next/image';
@@ -13,6 +14,8 @@ export const metadata: Metadata = {
   title: "KanaCanvas",
   description: "Improve your Japanese handwriting with helpful tips, easy-to-follow stroke orders, and examples of proper handwriting. Practice in our interactive space to build confidence in your writing skills.",
 };
+
+const gaId = process.env.GOOGLE_TAG_ID;
 
 export default function RootLayout({
   children,
@@ -43,6 +46,8 @@ export default function RootLayout({
           {children}
         </div>
       </body>
+      {/* Google Analytics */}
+      {gaId && <GoogleAnalytics gaId={gaId} />}
     </html>
   );
 }
