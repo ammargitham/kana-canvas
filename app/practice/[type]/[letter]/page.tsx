@@ -1,6 +1,6 @@
 'use client'
 
-import PracticeBottomNav from '@/components/PracticeBottomNavigation'
+import PracticeBottomNav from '@/components/practice-bottom-navigation'
 import { Button } from '@/components/ui/button'
 import { letters } from '@/lib/const'
 import { openDatabase } from '@/lib/db'
