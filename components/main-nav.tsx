@@ -38,13 +38,13 @@ export default function MainNav() {
       <div className='flex-1 flex justify-end gap-6'>
         <StyledLink
           href="/hiragana"
-          active={path === '/hiragana' || path.startsWith('/practice/hiragana')}
+          active={path === '/hiragana' || path.startsWith('/practice/hiragana/')}
         >
           Hiragana
         </StyledLink>
         <StyledLink
           href="/katakana"
-          active={path === '/katakana' || path.startsWith('/practice/katakana')}
+          active={path === '/katakana' || path.startsWith('/practice/katakana/')}
         >
           Katakana
         </StyledLink>
