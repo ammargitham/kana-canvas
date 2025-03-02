@@ -13,6 +13,10 @@ import CanvasDraw from 'react-canvas-draw'
 export default function PracticePage() {
   const { type, letter } = useParams<{ type: string, letter: string }>();
 
+  if (!['hiragana', 'katakana'].includes(type)) {
+    notFound();
+  }
+
   const letterObj = letters[type].find(o => o.kana === decodeURIComponent(letter));
 
   if (!letterObj) {
