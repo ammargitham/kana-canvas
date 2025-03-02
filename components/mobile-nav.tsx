@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils';
 import logo from '@/public/logo.svg';
 import { Menu } from 'lucide-react';
 import Image from 'next/image';
-import Link from 'next/link';
+import Link, { LinkProps } from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { Button } from './ui/button';
