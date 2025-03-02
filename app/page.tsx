@@ -26,9 +26,9 @@ export default function Home() {
         alt='KanaCanvas'
       />
       <main className='container mx-auto p-8 mt-4'>
-        <h1 className="text-4xl font-normal mb-8">Tips for beautiful handwriting in Japanese</h1>
-        <p className='font-medium mb-12'>Improve your Japanese handwriting with helpful tips, easy-to-follow stroke orders, and real examples of proper handwriting. Practice in our interactive space to build confidence in your writing skills.</p>
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-28'>
+        <h1 className="text-4xl font-normal mb-8">Beautiful handwriting in Japanese</h1>
+        <p className='font-medium mb-12'>Improve your Japanese handwriting with easy-to-follow stroke orders and real examples of proper handwriting. Practice in our interactive space to build confidence in your writing skills.</p>
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-28'>
           {sections.map((section) => (
             <div key={section.title}>
               <h2 className="text-lg font-bold mb-2">{section.title}</h2>
