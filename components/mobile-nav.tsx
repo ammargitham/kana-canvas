@@ -1,12 +1,12 @@
 'use client';
 
 import { cn } from '@/lib/utils';
+import logo from '@/public/logo.svg';
 import { Menu } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import logo from '../public/logo.svg';
 import { Button } from './ui/button';
 import { Drawer, DrawerContent, DrawerTitle, DrawerTrigger } from './ui/drawer';
 

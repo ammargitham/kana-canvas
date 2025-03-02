@@ -1,7 +1,7 @@
 import LetterGrid from '@/components/letter-grid'
+import { letters } from '@/lib/const'
+import katakanaImage from '@/public/katakana.jpg'
 import Image from 'next/image'
-import { letters } from '../../lib/const'
-import katakanaImage from '../../public/katakana.jpg'
 
 export default function KatakanaPage() {
   return (

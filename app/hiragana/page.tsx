@@ -1,7 +1,7 @@
 import LetterGrid from '@/components/letter-grid';
+import { letters } from '@/lib/const';
+import hiraganaImage from '@/public/hiragana.jpg';
 import Image from 'next/image';
-import { letters } from '../../lib/const';
-import hiraganaImage from '../../public/hiragana.jpg';
 
 export default function HiraganaPage() {
   return (

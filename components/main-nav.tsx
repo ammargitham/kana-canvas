@@ -1,10 +1,10 @@
 'use client';
 
 import { cn } from '@/lib/utils';
+import logo from '@/public/logo.svg';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import logo from '../public/logo.svg';
 
 interface StyledLinkProps {
   active?: boolean;
