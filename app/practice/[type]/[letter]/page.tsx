@@ -78,9 +78,10 @@ export default function PracticePage() {
           <h1 className="text-3xl font-bold mb-8">
             Practice {decodeURIComponent(letter)}
           </h1>
-          <div className='grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8'>
-            <div className="border border-gray-300 size-[400px]">
+          <div className='w-full flex gap-8 mb-8 flex-wrap justify-center'>
+            <div>
               <video
+                className='size-[400px] border border-gray-300'
                 width="400"
                 height="400"
                 controls
@@ -94,15 +95,17 @@ export default function PracticePage() {
                 Your browser does not support the video tag.
               </video>
             </div>
-            <div>
+            <div className='flex flex-col'>
               <CanvasDraw
                 ref={(canvasDraw) => {
                   canvasRef.current = canvasDraw;
                 }}
-                className="border border-gray-300 aspect-square"
+                className="border border-gray-300"
                 brushColor="black"
                 brushRadius={4}
                 lazyRadius={0}
+                canvasHeight={400}
+                canvasWidth={400}
                 gridSizeX={220}
                 gridSizeY={220}
                 gridColor='rgb(0, 0, 0, 0.5)'
