@@ -1,5 +1,5 @@
+import LetterGrid from '@/components/letter-grid'
 import Image from 'next/image'
-import LetterGrid from '../../components/LetterGrid'
 import { letters } from '../../lib/const'
 import katakanaImage from '../../public/katakana.jpg'
 
