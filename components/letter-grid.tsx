@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { LazySvg } from './lazy-svg';
 
 interface LetterGridProps {
   letters: { kana: string, pronunciation: string }[]
@@ -18,7 +19,12 @@ export default function LetterGrid({ letters, type }: LetterGridProps) {
             href={`/practice/${type}/${encodeURIComponent(letter.kana)}`}
             className="border border-neutral-200 bg-neutral-200/50 hover:bg-slate-300/50 transition-colors aspect-square text-center rounded flex flex-col items-center gap-1.5 sm:gap-2 justify-center"
           >
-            <span className='text-2xl sm:text-4xl font-bold'>{letter.kana}</span>
+            <LazySvg
+              className='size-6 sm:size-10 overflow-visible'
+              strokeWidth={30}
+              type={type}
+              letter={letter.pronunciation}
+            />
             <span className='text-sm font-light'>{letter.pronunciation}</span>
           </Link>
         );

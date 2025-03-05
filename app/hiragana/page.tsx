@@ -17,7 +17,7 @@ export default function HiraganaPage() {
         alt='Hiragana'
       />
       <main className='container mx-auto p-4 mt-4'>
-        <div className='mx-auto w-[400px] sm:w-[600px]'>
+        <div className='mx-auto w-full sm:w-[600px]'>
           <h1 className="text-3xl font-bold mb-8">Hiragana</h1>
           <LetterGrid letters={letters.hiragana} type="hiragana" />
         </div>

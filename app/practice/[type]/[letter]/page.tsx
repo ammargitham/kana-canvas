@@ -18,6 +18,16 @@ export async function generateMetadata(
   }
 }
 
+export async function generateStaticParams() {
+  return Object
+    .entries(letters)
+    .flatMap(([type, typeLetters]) => typeLetters.map((letter) => ({
+      type,
+      letter: encodeURIComponent(letter.kana),
+    })))
+    .filter((param) => !!param.letter);
+}
+
 export default async function PracticePage({ params }: PageProps) {
   const { type, letter } = await params;
 

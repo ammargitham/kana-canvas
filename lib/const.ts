@@ -1,4 +1,9 @@
-export const letters: Record<string, { kana: string, pronunciation: string }[]> = {
+export interface Letter {
+  kana: string;
+  pronunciation: string;
+};
+
+export const letters: Record<string, Letter[]> = {
   hiragana: [
     { kana: 'あ', pronunciation: 'a' },
     { kana: 'い', pronunciation: 'i' },

@@ -1,5 +1,6 @@
 'use client';
 
+import { LazySvg } from '@/components/lazy-svg';
 import PracticeBottomNav from '@/components/practice-bottom-navigation';
 import { Button } from '@/components/ui/button';
 import { letters } from '@/lib/const';
@@ -7,7 +8,7 @@ import { openDatabase } from '@/lib/db';
 import { useElementSize } from '@/lib/use-element-size';
 import { getNextLetter, getPrevLetter } from '@/lib/utils';
 import { Trash2, Undo2 } from 'lucide-react';
-import { Fragment, useEffect, useRef, useState } from 'react';
+import { Fragment, Suspense, useEffect, useRef, useState } from 'react';
 import CanvasDraw from 'react-canvas-draw';
 
 interface PracticePageProps {
@@ -85,6 +86,8 @@ export function PracticePage(
     canvasSize = 400;
   }
 
+  const pronunciation = letters[type][letterIndex].pronunciation;
+
   return (
     <Fragment>
       <hr className="bg-gray-50" />
@@ -93,8 +96,19 @@ export function PracticePage(
         className="container mx-auto"
       >
         <div className="mt-4 flex flex-col items-center">
-          <h1 className="text-3xl font-bold mb-8">
-            Practice {decodeURIComponent(letter)}
+          <h1 className="mb-8 flex flex-row gap-2 items-center">
+            <span className='text-3xl font-bold'>Practice</span>
+            <Suspense>
+              <LazySvg
+                className='size-8 overflow-visible'
+                preserveAspectRatio='meet'
+                width='100%'
+                height='100%'
+                strokeWidth={30}
+                letter={pronunciation}
+                type={type}
+              />
+            </Suspense>
           </h1>
           <div className='w-full flex gap-8 mb-8 flex-wrap justify-center'>
             <div>
@@ -153,7 +167,11 @@ export function PracticePage(
             </div>
           </div>
           <hr className='my-4 bg-gray-50 w-full' />
-          <PracticeBottomNav type={type} next={nextLetter} prev={prevLetter} />
+          <PracticeBottomNav
+            type={type}
+            next={nextLetter}
+            prev={prevLetter}
+          />
         </div>
       </main>
     </Fragment>

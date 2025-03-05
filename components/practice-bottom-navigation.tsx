@@ -1,50 +1,85 @@
+'use client';
+
+import { Letter } from '@/lib/const';
+import { cn } from '@/lib/utils';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
-import React from 'react';
+import { Suspense } from 'react';
+import { LazySvg } from './lazy-svg';
+
+interface LetterBoxProps {
+  className: string;
+  type: string;
+  letter: Letter;
+}
+
+function LetterBox(
+  {
+    className,
+    type,
+    letter,
+  }: LetterBoxProps
+) {
+  return (
+    <div
+      className={cn(
+        "border border-neutral-200 bg-neutral-200/50 hover:bg-slate-300/50 transition-colors size-16 text-2xl font-bold rounded flex flex-col gap-1.5 items-center justify-center",
+        className,
+      )}
+    >
+      <Suspense>
+        <LazySvg
+          className='size-6 overflow-visible'
+          strokeWidth={30}
+          type={type}
+          letter={letter.pronunciation}
+        />
+      </Suspense>
+      <span className='text-sm font-light'>{letter.pronunciation}</span>
+    </div>
+  );
+}
 
 interface PracticeBottomNavParams {
   type: string;
-  next: string;
-  prev: string;
+  next: Letter;
+  prev: Letter;
 }
 
-const PracticeBottomNav: React.FC<PracticeBottomNavParams> = (
+export default function PracticeBottomNav(
   {
     type,
     next,
     prev,
-  }
-) => {
+  }: PracticeBottomNavParams
+) {
   return (
     <div className="container flex justify-between p-4">
-      {prev ? (
+      {prev.kana ? (
         <Link
-          className={`flex items-center ${!prev ? 'pointer-events-none opacity-50' : ''}`}
-          href={prev ? `/practice/${type}/${encodeURIComponent(prev)}` : '#'}
+          className={`flex items-center ${!prev.kana ? 'pointer-events-none opacity-50' : ''}`}
+          href={prev.kana ? `/practice/${type}/${encodeURIComponent(prev.kana)}` : '#'}
         >
           <ArrowLeft />
-          <div
-            className="border border-neutral-200 bg-neutral-200/50 hover:bg-slate-300/50 transition-colors p-4 text-center text-2xl font-bold rounded ml-2"
-          >
-            {prev}
-          </div>
+          <LetterBox
+            className='ml-2'
+            type={type}
+            letter={prev} />
         </Link>
       ) : <div></div>}
-      {next ? (
+      {next.kana ? (
         <Link
-          className={`flex items-center ${!next ? 'pointer-events-none opacity-50' : ''}`}
-          href={next ? `/practice/${type}/${encodeURIComponent(next)}` : '#'}
+          className={`flex items-center ${!next.kana ? 'pointer-events-none opacity-50' : ''}`}
+          href={next.kana ? `/practice/${type}/${encodeURIComponent(next.kana)}` : '#'}
         >
-          <div
-            className="border border-neutral-200 bg-neutral-200/50 hover:bg-slate-300/50 transition-colors p-4 text-center text-2xl font-bold rounded mr-2"
-          >
-            {next}
-          </div>
+          <LetterBox
+            className='mr-2'
+            type={type}
+            letter={next} />
           <ArrowRight />
         </Link>
       ) : <div></div>}
     </div>
   );
-};
+}
 
-export default PracticeBottomNav;
