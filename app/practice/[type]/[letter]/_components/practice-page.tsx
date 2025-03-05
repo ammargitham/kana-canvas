@@ -4,6 +4,7 @@ import PracticeBottomNav from '@/components/practice-bottom-navigation';
 import { Button } from '@/components/ui/button';
 import { letters } from '@/lib/const';
 import { openDatabase } from '@/lib/db';
+import { useElementSize } from '@/lib/use-element-size';
 import { getNextLetter, getPrevLetter } from '@/lib/utils';
 import { Trash2, Undo2 } from 'lucide-react';
 import { Fragment, useEffect, useRef, useState } from 'react';
@@ -73,10 +74,24 @@ export function PracticePage(
     loadPracticedLetter();
   }, [letter]);
 
+  const { ref, width } = useElementSize();
+  let canvasSize = width;
+  if (canvasSize === 0) {
+    canvasSize = 400;
+  }
+  if (canvasSize <= 400) {
+    canvasSize = canvasSize - 40;
+  } else {
+    canvasSize = 400;
+  }
+
   return (
     <Fragment>
       <hr className="bg-gray-50" />
-      <main className="container mx-auto">
+      <main
+        ref={ref}
+        className="container mx-auto"
+      >
         <div className="mt-4 flex flex-col items-center">
           <h1 className="text-3xl font-bold mb-8">
             Practice {decodeURIComponent(letter)}
@@ -84,9 +99,9 @@ export function PracticePage(
           <div className='w-full flex gap-8 mb-8 flex-wrap justify-center'>
             <div>
               <video
-                className='size-[400px] border border-gray-300'
-                width="400"
-                height="400"
+                className={`size-[${canvasSize}px] border border-gray-300`}
+                width={canvasSize}
+                height={canvasSize}
                 controls
                 autoPlay
                 muted
@@ -107,10 +122,10 @@ export function PracticePage(
                 brushColor="black"
                 brushRadius={4}
                 lazyRadius={0}
-                canvasHeight={400}
-                canvasWidth={400}
-                gridSizeX={220}
-                gridSizeY={220}
+                canvasHeight={canvasSize}
+                canvasWidth={canvasSize}
+                gridSizeX={(canvasSize / 2) + 20}
+                gridSizeY={(canvasSize / 2) + 20}
                 gridColor='rgb(0, 0, 0, 0.5)'
                 onChange={(canvasDraw) => setCanvasData(canvasDraw.getSaveData())}
               />
