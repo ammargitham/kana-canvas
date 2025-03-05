@@ -1,7 +1,12 @@
 import LetterGrid from '@/components/letter-grid'
 import { letters } from '@/lib/const'
 import katakanaImage from '@/public/katakana.jpg'
+import { Metadata } from 'next'
 import Image from 'next/image'
+
+export const metadata: Metadata = {
+  title: 'Katakana',
+}
 
 export default function KatakanaPage() {
   return (

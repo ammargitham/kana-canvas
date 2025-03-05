@@ -11,7 +11,10 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "KanaCanvas",
+  title: {
+    template: '%s | KanaCanvas',
+    default: 'KanaCanvas',
+  },
   description: "Improve your Japanese handwriting with helpful tips, easy-to-follow stroke orders, and examples of proper handwriting. Practice in our interactive space to build confidence in your writing skills.",
 };
 
