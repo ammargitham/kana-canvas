@@ -31,7 +31,7 @@ export default function MainNav() {
   const path = usePathname();
 
   return (
-    <div className="p-4 hidden md:flex items-center">
+    <div className="px-4 py-2 hidden md:flex items-center">
       <Link href="/">
         <Logo className='h-6' />
       </Link>
