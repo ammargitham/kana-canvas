@@ -24,7 +24,7 @@ const PracticeBottomNav: React.FC<PracticeBottomNavParams> = (
         >
           <ArrowLeft />
           <div
-            className="border bg-slate-200 hover:bg-slate-300 p-4 text-center text-2xl font-bold rounded ml-2"
+            className="border border-neutral-200 bg-neutral-200/50 hover:bg-slate-300/50 transition-colors p-4 text-center text-2xl font-bold rounded ml-2"
           >
             {prev}
           </div>
@@ -36,7 +36,7 @@ const PracticeBottomNav: React.FC<PracticeBottomNavParams> = (
           href={next ? `/practice/${type}/${encodeURIComponent(next)}` : '#'}
         >
           <div
-            className="border bg-slate-200 hover:bg-slate-300 p-4 text-center text-2xl font-bold rounded mr-2"
+            className="border border-neutral-200 bg-neutral-200/50 hover:bg-slate-300/50 transition-colors p-4 text-center text-2xl font-bold rounded mr-2"
           >
             {next}
           </div>
