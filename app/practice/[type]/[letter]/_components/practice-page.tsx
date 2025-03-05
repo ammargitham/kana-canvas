@@ -140,7 +140,7 @@ export function PracticePage(
                 canvasWidth={canvasSize}
                 gridSizeX={(canvasSize / 2) + 20}
                 gridSizeY={(canvasSize / 2) + 20}
-                gridColor='rgb(0, 0, 0, 0.5)'
+                gridColor='rgb(0, 0, 0, 0.3)'
                 onChange={(canvasDraw) => setCanvasData(canvasDraw.getSaveData())}
               />
               <div>
