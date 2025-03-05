@@ -1,10 +1,10 @@
 'use client';
 
 import { cn } from '@/lib/utils';
-import logo from '@/public/logo.svg';
-import Image from 'next/image';
+import Logo from '@/public/logo.svg';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { ThemeSwitcher } from './theme-switcher';
 
 interface StyledLinkProps {
   active?: boolean;
@@ -33,9 +33,9 @@ export default function MainNav() {
   return (
     <div className="p-4 hidden md:flex items-center">
       <Link href="/">
-        <Image src={logo} alt="KanaCanvas" height={24} />
+        <Logo className='h-6' />
       </Link>
-      <div className='flex-1 flex justify-end gap-6'>
+      <div className='flex-1 flex justify-end gap-6 items-center'>
         <StyledLink
           href="/hiragana"
           active={path === '/hiragana' || path.startsWith('/practice/hiragana/')}
@@ -48,6 +48,7 @@ export default function MainNav() {
         >
           Katakana
         </StyledLink>
+        <ThemeSwitcher />
       </div>
     </div>
   )

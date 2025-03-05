@@ -1,12 +1,12 @@
 'use client';
 
 import { cn } from '@/lib/utils';
-import logo from '@/public/logo.svg';
-import { Menu } from 'lucide-react';
-import Image from 'next/image';
+import Logo from '@/public/logo.svg';
+import { MenuIcon } from 'lucide-react';
 import Link, { LinkProps } from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import { ThemeSwitcher } from './theme-switcher';
 import { Button } from './ui/button';
 import { Drawer, DrawerContent, DrawerTitle, DrawerTrigger } from './ui/drawer';
 
@@ -46,35 +46,41 @@ export default function MobileNav() {
   return (
     <div className="container px-4 h-14 flex items-center justify-between md:hidden">
       <Link href="/" className="font-bold pr-2">
-        <Image src={logo} alt="KanaCanvas" height={24} />
+        <Logo className='h-6' />
       </Link>
-      <Drawer open={open} onOpenChange={setOpen}>
-        <DrawerTrigger asChild>
-          <Button variant='ghost' className='p-2 size-9 [&_svg]:size-7'>
-            <Menu />
-            <span className="sr-only">Toggle Menu</span>
-          </Button>
-        </DrawerTrigger>
-        <DrawerContent className="max-h-[60svh] p-0">
-          <DrawerTitle className='sr-only'>Menu</DrawerTitle>
-          <div className="overflow-auto p-6">
-            <div className="flex flex-col space-y-2">
-              <MobileLink
-                href="/hiragana"
-                onOpenChange={setOpen}
-              >
-                Hiragana
-              </MobileLink>
-              <MobileLink
-                href="/katakana"
-                onOpenChange={setOpen}
-              >
-                Katakana
-              </MobileLink>
+      <div className='flex flex-row items-center gap-2'>
+        <ThemeSwitcher />
+        <Drawer open={open} onOpenChange={setOpen}>
+          <DrawerTrigger asChild>
+            <Button
+              variant='ghost'
+              className='px-0 size-8'
+            >
+              <MenuIcon className='!size-6' />
+              <span className="sr-only">Toggle Menu</span>
+            </Button>
+          </DrawerTrigger>
+          <DrawerContent className="max-h-[60svh] p-0">
+            <DrawerTitle className='sr-only'>Menu</DrawerTitle>
+            <div className="overflow-auto p-6">
+              <div className="flex flex-col space-y-2">
+                <MobileLink
+                  href="/hiragana"
+                  onOpenChange={setOpen}
+                >
+                  Hiragana
+                </MobileLink>
+                <MobileLink
+                  href="/katakana"
+                  onOpenChange={setOpen}
+                >
+                  Katakana
+                </MobileLink>
+              </div>
             </div>
-          </div>
-        </DrawerContent>
-      </Drawer>
+          </DrawerContent>
+        </Drawer>
+      </div>
     </div>
   )
 }

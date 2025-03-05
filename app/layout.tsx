@@ -1,4 +1,5 @@
 import Header from '@/components/header';
+import { ThemeProvider } from '@/components/theme-provider';
 import { getGaId } from '@/lib/actions';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import type { Metadata } from "next";
@@ -21,12 +22,19 @@ export default async function RootLayout({
 }>) {
   const gaId = await getGaId();
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={`${montserrat.className} antialiased`}>
-        <Header />
-        <div>
-          {children}
-        </div>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Header />
+          <div>
+            {children}
+          </div>
+        </ThemeProvider>
       </body>
       {/* Google Analytics */}
       {gaId && <GoogleAnalytics gaId={gaId} />}
