@@ -1,10 +1,7 @@
-'use client';
-
 import { Letter } from '@/lib/const';
 import { cn } from '@/lib/utils';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
-import { Suspense } from 'react';
 import { LazySvg } from './lazy-svg';
 
 interface LetterBoxProps {
@@ -27,14 +24,12 @@ function LetterBox(
         className,
       )}
     >
-      <Suspense>
-        <LazySvg
-          className='size-6 overflow-visible'
-          strokeWidth={30}
-          type={type}
-          letter={letter.pronunciation}
-        />
-      </Suspense>
+      <LazySvg
+        className='size-6 overflow-visible'
+        strokeWidth={30}
+        type={type}
+        letter={letter.pronunciation}
+      />
       <span className='text-sm font-light'>{letter.pronunciation}</span>
     </div>
   );

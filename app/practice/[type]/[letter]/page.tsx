@@ -1,6 +1,9 @@
+import PracticeBottomNav from '@/components/practice-bottom-navigation'
 import { letters } from '@/lib/const'
+import { getNextLetter, getPrevLetter } from '@/lib/utils'
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
+import { Fragment } from 'react'
 import { PracticePage as PracticePageComp } from './_components/practice-page'
 
 type PageProps = {
@@ -35,6 +38,10 @@ export default async function PracticePage({ params }: PageProps) {
     notFound();
   }
 
+  const letterIndex = letters[type].findIndex(o => o.kana === decodeURIComponent(letter))
+  const nextLetter = getNextLetter(type, letterIndex)
+  const prevLetter = getPrevLetter(type, letterIndex)
+
   const letterObj = letters[type].find(o => o.kana === decodeURIComponent(letter));
 
   if (!letterObj) {
@@ -42,6 +49,17 @@ export default async function PracticePage({ params }: PageProps) {
   }
 
   return (
-    <PracticePageComp letter={letter} type={type} />
+    <Fragment>
+      <hr className="bg-gray-50" />
+      <main className="container mx-auto">
+        <PracticePageComp letter={letter} type={type} />
+        <hr className='my-4 bg-gray-50 w-full' />
+        <PracticeBottomNav
+          type={type}
+          next={nextLetter}
+          prev={prevLetter}
+        />
+      </main>
+    </Fragment>
   )
 }
