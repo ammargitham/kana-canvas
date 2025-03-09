@@ -3,6 +3,8 @@ import { ThemeProvider } from '@/components/theme-provider';
 import { getGaId } from '@/lib/actions';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import type { Metadata } from "next";
+import { NextIntlClientProvider } from 'next-intl';
+import { getLocale, getMessages } from 'next-intl/server';
 import { Montserrat } from "next/font/google";
 import "./globals.css";
 
@@ -15,7 +17,7 @@ export const metadata: Metadata = {
     template: '%s | KanaCanvas',
     default: 'KanaCanvas',
   },
-  description: "Improve your Japanese handwriting with helpful tips, easy-to-follow stroke orders, and examples of proper handwriting. Practice in our interactive space to build confidence in your writing skills.",
+  description: "Improve your Japanese handwriting with easy-to-follow stroke orders, and examples of proper handwriting. Practice in our interactive space to build confidence in your writing skills.",
 };
 
 export default async function RootLayout({
@@ -23,9 +25,11 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const locale = await getLocale();
   const gaId = await getGaId();
+  const messages = await getMessages();
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning>
       <body className={`${montserrat.className} antialiased`}>
         <ThemeProvider
           attribute="class"
@@ -33,10 +37,12 @@ export default async function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Header />
-          <div>
-            {children}
-          </div>
+          <NextIntlClientProvider messages={messages}>
+            <Header />
+            <div>
+              {children}
+            </div>
+          </NextIntlClientProvider>
         </ThemeProvider>
       </body>
       {/* Google Analytics */}

@@ -3,6 +3,7 @@
 import { cn } from '@/lib/utils';
 import Logo from '@/public/logo.svg';
 import { MenuIcon } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 import Link, { LinkProps } from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
@@ -41,11 +42,16 @@ function MobileLink({
 }
 
 export default function MobileNav() {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
+  const t = useTranslations('Header');
 
   return (
     <div className="container px-4 h-14 flex items-center justify-between md:hidden">
-      <Link href="/" className="font-bold pr-2">
+      <Link
+        href="/"
+        className="font-bold pr-2"
+        title={t('kanacanvas')}
+      >
         <Logo className='h-6' />
       </Link>
       <div className='flex flex-row items-center gap-2'>
@@ -55,26 +61,27 @@ export default function MobileNav() {
             <Button
               variant='ghost'
               className='px-0 size-8'
+              title={t('toggle-menu')}
             >
               <MenuIcon className='!size-6' />
-              <span className="sr-only">Toggle Menu</span>
+              <span className="sr-only">{t('toggle-menu')}</span>
             </Button>
           </DrawerTrigger>
           <DrawerContent className="max-h-[60svh] p-0">
-            <DrawerTitle className='sr-only'>Menu</DrawerTitle>
+            <DrawerTitle className='sr-only'>{t('menu')}</DrawerTitle>
             <div className="overflow-auto p-6">
               <div className="flex flex-col space-y-2">
                 <MobileLink
                   href="/hiragana"
                   onOpenChange={setOpen}
                 >
-                  Hiragana
+                  {t('hiragana')}
                 </MobileLink>
                 <MobileLink
                   href="/katakana"
                   onOpenChange={setOpen}
                 >
-                  Katakana
+                  {t('katakana')}
                 </MobileLink>
               </div>
             </div>

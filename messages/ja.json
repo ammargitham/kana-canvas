@@ -1,0 +1,27 @@
+{
+  "Header": {
+    "hiragana": "ひらがな",
+    "katakana": "カタカナ",
+    "kanacanvas": "KanaCanvas",
+    "change-language": "言語",
+    "menu": "Menu",
+    "toggle-menu": "Menu",
+    "toggle-theme": "テーマ"
+  },
+  "HomePage": {
+    "description": "正しい筆順と見本を見ながら練習し、手書き文字を上達させましよう。",
+    "hiragana": "ひらがな",
+    "katakana": "カタカナ",
+    "hiragana-desc": "ひらがなは46文字あり、日本語の基本的な文字の一つです。単語や文法的な機能に使用され、カタカナや漢字と一緒に使われます。ひらがなを学ぶことは、日本語を書くための第一歩です。",
+    "katakana-desc": "カタカナは外国語の単語や名前、科学用語などに使われる文字で、ひらがなと同じく46文字あります。カタカナを学ぶことは、日本語の外来語を理解するための重要なステップです。",
+    "learn": "Learn",
+    "title": "日本語の美文字",
+    "kanacanvas": "KanaCanvas"
+  },
+  "Hiragana": {
+    "title": "ひらがな"
+  },
+  "Katakana": {
+    "title": "カタカナ"
+  }
+}

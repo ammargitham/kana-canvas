@@ -2,8 +2,10 @@
 
 import { cn } from '@/lib/utils';
 import Logo from '@/public/logo.svg';
+import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { LocaleSwitcher } from './locale-switcher';
 import { ThemeSwitcher } from './theme-switcher';
 
 interface StyledLinkProps {
@@ -29,10 +31,14 @@ function StyledLink({ active, children, href }: StyledLinkProps) {
 
 export default function MainNav() {
   const path = usePathname();
+  const t = useTranslations('Header');
 
   return (
     <div className="px-4 py-2 hidden md:flex items-center">
-      <Link href="/">
+      <Link
+        href="/"
+        title={t('kanacanvas')}
+      >
         <Logo className='h-6' />
       </Link>
       <div className='flex-1 flex justify-end gap-6 items-center'>
@@ -40,15 +46,18 @@ export default function MainNav() {
           href="/hiragana"
           active={path === '/hiragana' || path.startsWith('/practice/hiragana/')}
         >
-          Hiragana
+          {t('hiragana')}
         </StyledLink>
         <StyledLink
           href="/katakana"
           active={path === '/katakana' || path.startsWith('/practice/katakana/')}
         >
-          Katakana
+          {t('katakana')}
         </StyledLink>
-        <ThemeSwitcher />
+        <div className='flex gap-1'>
+          <ThemeSwitcher />
+          <LocaleSwitcher />
+        </div>
       </div>
     </div>
   )

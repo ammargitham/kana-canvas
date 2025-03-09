@@ -68,7 +68,7 @@ export function PracticePage(
     loadPracticedLetter();
   }, [letter]);
 
-  const { ref, width } = useElementSize();
+  const { ref, width } = useElementSize<HTMLDivElement>();
   let canvasSize = width;
   if (canvasSize === 0) {
     canvasSize = 400;

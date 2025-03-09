@@ -2,12 +2,17 @@ import PracticeBottomNav from '@/components/practice-bottom-navigation'
 import { letters } from '@/lib/const'
 import { getNextLetter, getPrevLetter } from '@/lib/utils'
 import { Metadata } from 'next'
+import { getTranslations } from 'next-intl/server'
 import { notFound } from 'next/navigation'
 import { Fragment } from 'react'
 import { PracticePage as PracticePageComp } from './_components/practice-page'
 
 type PageProps = {
-  params: Promise<{ type: string, letter: string }>
+  params: Promise<{
+    locale: string,
+    type: string,
+    letter: string
+  }>
 }
 
 export async function generateMetadata(
@@ -15,21 +20,22 @@ export async function generateMetadata(
     params,
   }: PageProps
 ): Promise<Metadata> {
-  const { type, letter } = await params;
+  const { locale, type, letter } = await params;
+  const t = await getTranslations({ locale, namespace: 'Header' });
   return {
-    title: `Practice ${decodeURIComponent(letter)} | ${type}`,
+    title: `${decodeURIComponent(letter)} | ${t(type)}`,
   }
 }
 
-export async function generateStaticParams() {
-  return Object
-    .entries(letters)
-    .flatMap(([type, typeLetters]) => typeLetters.map((letter) => ({
-      type,
-      letter: encodeURIComponent(letter.kana),
-    })))
-    .filter((param) => !!param.letter);
-}
+// export async function generateStaticParams() {
+//   return Object
+//     .entries(letters)
+//     .flatMap(([type, typeLetters]) => typeLetters.map((letter) => ({
+//       type,
+//       letter: encodeURIComponent(letter.kana),
+//     })))
+//     .filter((param) => !!param.letter);
+// }
 
 export default async function PracticePage({ params }: PageProps) {
   const { type, letter } = await params;

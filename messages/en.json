@@ -1,0 +1,27 @@
+{
+  "Header": {
+    "kanacanvas": "KanaCanvas",
+    "hiragana": "Hiragana",
+    "katakana": "Katakana",
+    "toggle-theme": "Theme",
+    "change-language": "Language",
+    "toggle-menu": "Menu",
+    "menu": "Menu"
+  },
+  "HomePage": {
+    "kanacanvas": "KanaCanvas",
+    "title": "Beautiful handwriting in Japanese",
+    "description": "Improve your Japanese handwriting with easy-to-follow stroke orders and real examples of proper handwriting. Practice in our interactive space to build confidence in your writing skills.",
+    "hiragana": "Hiragana",
+    "hiragana-desc": "Hiragana is one of the basic Japanese writing systems, consisting of 46 characters. It is used for native Japanese words, grammatical functions, and often paired with Katakana and Kanji. Learning Hiragana is the first step in writing Japanese.",
+    "katakana": "Katakana",
+    "katakana-desc": "Katakana is a Japanese writing system used for foreign words, names, and certain scientific terms. It is typically used alongside Hiragana and Kanji. Learning Katakana is key to understanding and reading loanwords in Japanese.",
+    "learn": "Learn"
+  },
+  "Hiragana": {
+    "title": "Hiragana"
+  },
+  "Katakana": {
+    "title": "Katakana"
+  }
+}
