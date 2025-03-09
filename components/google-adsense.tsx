@@ -5,9 +5,6 @@ interface GoogleAdSenseProps {
 };
 
 export default function GoogleAdSense({ pId }: GoogleAdSenseProps) {
-  if (process.env.NODE_ENV !== "production") {
-    return null;
-  }
   return (
     <Script
       async
