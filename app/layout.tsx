@@ -1,6 +1,5 @@
 import Header from '@/components/header';
 import { ThemeProvider } from '@/components/theme-provider';
-import { getGaId } from '@/lib/actions';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from 'next-intl';
@@ -24,7 +23,7 @@ export async function generateMetadata(): Promise<Metadata> {
   if (adSenseId) {
     metadata['verification'] = {
       other: {
-        'google-adsense-account': adSenseId,
+        'google-adsense-account': `ca-pub-${adSenseId}`,
       }
     }
   }
@@ -37,7 +36,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const locale = await getLocale();
-  const gaId = await getGaId();
+  const gaId = process.env.GOOGLE_TAG_ID;
   const messages = await getMessages();
   return (
     <html lang={locale} suppressHydrationWarning>
