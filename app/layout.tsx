@@ -1,6 +1,7 @@
+import GoogleAdSense from '@/components/google-adsense';
 import Header from '@/components/header';
 import { ThemeProvider } from '@/components/theme-provider';
-import { getGaId } from '@/lib/actions';
+import { getAdSenseId, getGaId } from '@/lib/actions';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from 'next-intl';
@@ -27,6 +28,7 @@ export default async function RootLayout({
 }>) {
   const locale = await getLocale();
   const gaId = await getGaId();
+  const adSenseId = await getAdSenseId();
   const messages = await getMessages();
   return (
     <html lang={locale} suppressHydrationWarning>
@@ -47,6 +49,8 @@ export default async function RootLayout({
       </body>
       {/* Google Analytics */}
       {gaId && <GoogleAnalytics gaId={gaId} />}
+      {/* Google AdSense */}
+      {adSenseId && <GoogleAdSense pId={adSenseId} />}
     </html>
   );
 }
